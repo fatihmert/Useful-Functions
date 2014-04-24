@@ -7,6 +7,51 @@
 	RELEASE:	25.01.2014 - 22:40
 */
 
+/*
+		!!!!!!!!!!!!!!
+		KULLANIM-USING
+		!!!!!!!!!!!!!!
+		
+	#lambda(<exec>,<expression>)
+	@param exec: 			string
+	@param expression:		string
+	
+	This function is still developing...
+	Bu fonksiyon halen geliştiriliyor.
+	
+	Python using (Python kullanımı);
+		g = lambda x: x**2
+		g(8)
+		
+	Result (Sonuç); 16
+	PHP using (PHP kullanımı);
+		$e = lambda("g(8)","g = lambda x: x*2");
+		echo $e;
+	Result (Sonuç); 16
+	
+	#str(<string>,<3s>)
+	@param string:			string
+	@param 3s(start:step:stop):	string
+	
+	Python is use syntax with string and array, like array[2:1]. Syntax [start:stop:step]
+	Python'daki söz dizimi [start:stop:step], python'daki tüm depolama hizmetlerini dizi[2:1] şeklinde sıralandırabiliyorsunuz
+	
+	PHP using, I think after new able add to this function. I added php iconv() function. You are use two way, first way there isn't iconv(), second way so last way iconv() using.
+	PHP de kullanırken sonraları problem olabileceğini düşündüğüm için bu fonksiyone yeni bir özellik daha ekkledim. Bu özellikte PHP deki iconv() fonksiyonu. İlk kullanım, iconv()'siz ikincisi ise iconv()'li kullanım.
+	
+	First way (İlk kullanım);
+	str(<$string>,"start:stop:step")
+	
+	With using "iconv()" (iconv()'li kullanım);
+	str(<$string>,"start:stop:step;<string_char_code>:<string_to_char_code>")
+	
+	For example: (Bir örnek)
+	$e = str("1:9;UTF-8:ISO-9","fatihmert");
+	echo $e;
+	
+	Result(sonuc): atihmert
+*/
+
 
 class Python{
 	
