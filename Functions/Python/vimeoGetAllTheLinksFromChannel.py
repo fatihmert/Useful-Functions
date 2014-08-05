@@ -14,12 +14,12 @@ sys.setrecursionlimit(10000) #depth value
 
 #ORNEK
 LINK = "http://vimeo.com/channels/blendertuts/"
-LINKLER = []
 
 def vimeoGetLinksFromCh(LINK):
+	global LINKLER = []
 	try:
 		if re.search("vimeo",LINK):
-			print "requests"
+			#print "requests"
 			rq = requests.get(LINK)
 				
 			DOM = BeautifulSoup(rq.text)
@@ -28,7 +28,7 @@ def vimeoGetLinksFromCh(LINK):
 			SF_COUNT = int(paginationNext.find_previous_siblings("li")[0].text) #SAYFA SAYISI
 			for sayfaNo in range(1,SF_COUNT+1): #SF_COUNT
 				SF_LINK = "%spage:%s"%(LINK,sayfaNo)
-				sf_rq = rq = requests.get(SF_LINK)
+				sf_rq = requests.get(SF_LINK)
 				SF_DOM = BeautifulSoup(sf_rq.text)
 				SF_DOM.prettify()
 				SF_VIDEOLAR = SF_DOM.find("ol",id="clips")
@@ -39,10 +39,10 @@ def vimeoGetLinksFromCh(LINK):
 				print "%s.Sayfa eklendi!"%sayfaNo
 			LINKLER = set(LINKLER) #SAME THE DELETE LINE
 			LINKLER = list(LINKLER)
-			for i in LINKLER:
-				if  re.search(".*page.*",i):
-					print LINKLER[LINKLER.index(i)]
-					LINKLER.pop(LINKLER.index(i))
+			#for i in LINKLER:
+			#	if  re.search(".*page.*",i):
+			#		print LINKLER[LINKLER.index(i)]
+			#		LINKLER.pop(LINKLER.index(i))
 			with open("linkler.txt","w") as f:
 				f.write('\n'.join(LINKLER))
 		else:
@@ -52,6 +52,4 @@ def vimeoGetLinksFromCh(LINK):
 	except requests.exceptions.HTTPError, e:
 		print "HTTP hatasi: ",e
 	except:
-		import sys
 		print sys.exc_info()[:2]
-		del sys
