@@ -1,8 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from bs4 import BeautifulSoup
-import mechanize
-import re
+import mechanize,re
 
 def getSef(s):
 	if re.search("\?",s):
