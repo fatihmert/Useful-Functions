@@ -57,8 +57,6 @@ class Python{
 	
 	private function isInt($i){return preg_match('@^[-]?[0-9]+$@',$i) === 1;}
 	private function isVar($i){return preg_match("/(^\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/",$i) === 1;} //isVar("\$fatihmert1995") => true
-	//private function varRp($i){return preg_replace("/(^\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/", "\\$1",$i);}
-	//private function topVar($i){preg_match_all('/(^\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/',$i,$yakala);return $yakala;}
 	private function ilkSon($pat,$i,$s){if($this->str($pat,"0:1") == $i && $this->str($pat,"-1") == $s){return true;}}
 	
 	public function lambda($kullan,$pattern){
