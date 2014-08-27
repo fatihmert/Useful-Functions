@@ -39,10 +39,6 @@ def vimeoGetLinksFromCh(LINK):
 				print "%s.Sayfa eklendi!"%sayfaNo
 			LINKLER = set(LINKLER) #SAME THE DELETE LINE
 			LINKLER = list(LINKLER)
-			#for i in LINKLER:
-			#	if  re.search(".*page.*",i):
-			#		print LINKLER[LINKLER.index(i)]
-			#		LINKLER.pop(LINKLER.index(i))
 			with open("linkler.txt","w") as f:
 				f.write('\n'.join(LINKLER))
 		else:
