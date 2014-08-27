@@ -19,9 +19,7 @@ def vimeoGetLinksFromCh(LINK):
 	global LINKLER = []
 	try:
 		if re.search("vimeo",LINK):
-			#print "requests"
 			rq = requests.get(LINK)
-				
 			DOM = BeautifulSoup(rq.text)
 			DOM.prettify()
 			paginationNext = DOM.find("li","pagination_next")
@@ -32,7 +30,6 @@ def vimeoGetLinksFromCh(LINK):
 				SF_DOM = BeautifulSoup(sf_rq.text)
 				SF_DOM.prettify()
 				SF_VIDEOLAR = SF_DOM.find("ol",id="clips")
-				
 				for SF_VIDEO_LI in SF_VIDEOLAR:
 					 if  not re.search(".*page.*",SF_VIDEO_LI.find_next('a')['href']):
 						LINKLER.append("http://vimeo.com%s"%SF_VIDEO_LI.find_next('a')['href'])
@@ -42,10 +39,11 @@ def vimeoGetLinksFromCh(LINK):
 			with open("linkler.txt","w") as f:
 				f.write('\n'.join(LINKLER))
 		else:
-			print  "LINK VIMEO DEGİL." #raise olacak
+			raise  "LINK VIMEO DEGİL."
 	except requests.exceptions.ConnectionError, e:
-		print "Bağlanti hatasi: ",e
+		raise "Bağlanti hatasi: ",e
 	except requests.exceptions.HTTPError, e:
-		print "HTTP hatasi: ",e
+		raise "HTTP hatasi: ",e
 	except:
-		print sys.exc_info()[:2]
+		raise sys.exc_info()[:2]
+	return LINKLER
